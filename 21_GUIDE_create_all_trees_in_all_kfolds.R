@@ -1,17 +1,3 @@
-# create_CERP_GUIDE_forests <- function(num_partition, num_of_folds) {
-#   for (k in 1:num_of_folds) {
-#     for (j in 1:num_partition) {
-#       #TODO: HARDCODED below input file
-#       text <- readLines("prostatecancer_no_prune.input", encoding = "UTF-8")
-#       text[4]  <- str_c('"guide_output/kfold_', k, '_tree_', j, '.out"')
-#       text[10] <- str_c('"guide_data/kfold_', k, '_part_', j, '.dsc"')
-#       text[20] <- str_c('"guide_output/kfold_', k, '_tree_', j, '.R"')
-#       write(text, file = "prostate.tmp_input")
-#       system("./guide < prostate.tmp_input")
-#     }
-#   }
-# }
-
 create_CERP_GUIDE_forests <- function(num_partition, num_of_folds) {
   #for (k in 1:num_of_folds) {
   #  for (j in 1:num_partition) {
