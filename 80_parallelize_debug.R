@@ -2,7 +2,7 @@ delete_generated_files()
 # nonparallel Time difference of 44.88362 secs
 # Parallel Time difference of 34.38888 secs
 start_time <- Sys.time()
-create_CERP_partition(604, nrow(prostate_data), 1964)
+create_CERP_partition(853, nrow(prostate_data), 1964)
 end_time <- Sys.time()
 end_time - start_time
 
