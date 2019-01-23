@@ -1,6 +1,6 @@
 ## Generate GUIDE .dsc for each partition
 
-generate_guide_description_file <- function(num_partition, num_of_folds) {
+generate_guide_description_file <- function(num_partition, num_of_folds, rand_seed) {
   j <- 1:num_of_folds
   i <- 1:num_partition
   iandj <- expand.grid(i = i, j = j)
@@ -9,13 +9,13 @@ generate_guide_description_file <- function(num_partition, num_of_folds) {
     j <- iandj[iter, ]$j
     ## Generate GUIDE .dsc
     kfoldj_parti_path <-
-      str_c("kfold_partitions/kfold_", j, "_part_", i, ".csv")
+      str_c("kfold_partitions/rand_seed_",rand_seed,"_kfold_", j, "_part_", i, ".csv")
     kfold_j_part_i <- read_csv(kfoldj_parti_path)
     part_to_write <- kfold_j_part_i
     data_file_name <-
-      str_c('"guide_data/kfold_', j, '_part_', i, '.txt"')
+      str_c('"guide_data/rand_seed_',rand_seed,'_kfold_', j, '_part_', i, '.txt"')
     desc_file_name <-
-      str_c("guide_data/kfold_", j, "_part_", i, ".dsc")
+      str_c("guide_data/rand_seed_",rand_seed,"_kfold_", j, "_part_", i, ".dsc")
     tmp <- c(data_file_name, "NA", 2)
     for (k in 1:length(names(part_to_write))) {
       preds_and_feature <- names(part_to_write)
@@ -36,7 +36,7 @@ generate_guide_description_file <- function(num_partition, num_of_folds) {
     ## Generate GUIDE .txt for each partition
     # create the path and write out to txt
     data_file_path <-
-      str_c('guide_data/kfold_', j, '_part_', i, '.txt')
+      str_c('guide_data/rand_seed_',rand_seed,'_kfold_', j, '_part_', i, '.txt')
     options(scipen = 100)
     write.table(
       part_to_write,

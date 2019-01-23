@@ -9,7 +9,7 @@ end_time - start_time
 # Nonparallel Time difference of 55.14364 secs
 # Parallel I Time difference of 20.40521 secs
 start_time <- Sys.time()
-generate_guide_description_file(604, nrow(prostate_data))
+generate_guide_description_file(853, nrow(prostate_data), rand_seed)
 end_time <- Sys.time()
 end_time - start_time
 
