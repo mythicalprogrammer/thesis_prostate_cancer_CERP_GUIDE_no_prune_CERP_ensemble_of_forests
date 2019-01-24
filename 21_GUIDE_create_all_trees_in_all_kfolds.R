@@ -22,7 +22,7 @@ create_CERP_GUIDE_forest <- function(num_partition, num_of_folds, rand_seed) {
     j <- kandj[iter,]$j
     #TODO: HARDCODED below input file
       text <- readLines("prostatecancer_no_prune.input", encoding = "UTF-8")
-      text[4]  <- str_c('"guide_output/out_files/kfold_', k, '_tree_', j, '.out"')
+      text[4]  <- str_c('"guide_output/out_files/rand_seed_',rand_seed,'_kfold_', k, '_tree_', j, '.out"')
       text[10] <- str_c('"guide_data/rand_seed_',rand_seed,'_kfold_', k, '_part_', j, '.dsc"')
       text[20] <- str_c('"guide_output/forests/rand_seed_',rand_seed,'/kfold_', k, '_tree_', j, '.R"')
       tmp_input_file <- str_c("tmp_input/prostate.tmp_input_", k, '_tree_', j)
