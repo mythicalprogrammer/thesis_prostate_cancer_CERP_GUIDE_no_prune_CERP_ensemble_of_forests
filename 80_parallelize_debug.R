@@ -1,3 +1,7 @@
+prostate_data <- read.table("start_data/GDS1390_after_anova.csv",
+                            sep = ",",
+                            header = TRUE)
+rand_seed <- 1964
 delete_generated_files()
 # nonparallel Time difference of 44.88362 secs
 # Parallel Time difference of 34.38888 secs
@@ -15,7 +19,7 @@ end_time - start_time
 
 # parallel II 3.116235 mins
 start_time <- Sys.time()
-create_CERP_GUIDE_forests(604, nrow(prostate_data))
+create_CERP_GUIDE_forest(853, nrow(prostate_data), rand_seed)
 end_time <- Sys.time()
 end_time - start_time
 
