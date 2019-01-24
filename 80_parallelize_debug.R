@@ -33,10 +33,20 @@ end_time <- Sys.time()
 end_time - start_time
 
 
-# Nonparallel 9.454669 mins
-# Parallel I  2.741934 mins
+# Nonparallel 5.291119 mins for 3 trees
+# Parallel I
 start_time <- Sys.time()
-cross_validate_CERP_GUIDE(875, nrow(prostate_data), prostate_data)
+cross_validate_CERP_GUIDE_ensemble_forests(num_partition,
+                                           nrow(prostate_data),
+                                           prostate_data,
+                                           rand_seeds)
+end_time <- Sys.time()
+end_time - start_time
+
+# Nonparallel
+# Parallel I
+start_time <- Sys.time()
+ensemble_forest_majority_votes(num_partition, rand_seeds)
 end_time <- Sys.time()
 end_time - start_time
 

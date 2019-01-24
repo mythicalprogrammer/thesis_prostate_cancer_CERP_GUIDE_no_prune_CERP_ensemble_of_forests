@@ -1,6 +1,7 @@
 cross_validate_CERP_GUIDE <- function(num_partition,
                                       num_of_folds,
-                                      prostate_data) {
+                                      prostate_data,
+                                      rand_seed) {
   forest_predictions <- list()
   for (k in 1:num_of_folds) {
     forest_votes <- mclapply(1:num_partition, function(i) {
@@ -8,7 +9,7 @@ cross_validate_CERP_GUIDE <- function(num_partition,
       leftout <- prostate_data[k,]
       ## try to predict with just one tree
       kth_ith_tree <-
-        str_c("guide_output/kfold_", k, "_tree_", i, ".r")
+        str_c("guide_output/forests/rand_seed_",rand_seed,"/kfold_", k, "_tree_", i, ".R")
       print(kth_ith_tree)
       text <- readLines(kth_ith_tree, encoding = "UTF-8")
       to_be_remove <- grep("^newdata <-*", text)
@@ -37,7 +38,7 @@ cross_validate_CERP_GUIDE <- function(num_partition,
   }
 
   # back up the result since this took awhile to run
-  file_path  <- str_c('results/LOOCV_CERP_GUIDE_results_num_part_',
+  file_path  <- str_c('results/rand_seed_',rand_seed,'_LOOCV_CERP_GUIDE_results_num_part_',
                       num_partition,
                       '.csv')
   write.csv(forest_predictions,
