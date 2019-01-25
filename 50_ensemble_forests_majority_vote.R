@@ -29,6 +29,8 @@ ensemble_forest_majority_votes <-
     file_path  <-
       str_c('results/ensemble_forests_results_num_part_',
             part_num,
+            '_forests_num_',
+            length(rand_seeds),
             '.csv')
     write.csv(majority_votes,
               file = file_path,

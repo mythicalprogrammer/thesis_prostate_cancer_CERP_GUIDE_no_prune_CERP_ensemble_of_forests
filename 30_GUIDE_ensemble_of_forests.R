@@ -1,5 +1,5 @@
 create_ensemble_of_GUIDE_forests <- function(num_partition, num_of_folds, rand_seeds) {
-  clear_forests()
+  #clear_forests()
   # TODO: parallelize this
   for (seed in rand_seeds) {
     delete_generated_files()
